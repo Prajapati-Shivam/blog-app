@@ -50,14 +50,14 @@ const Links = () => {
                 Admin
               </Link>
             )}
-            <button className="font-bold p-2 cursor-pointer bg-white text-black">
+            <button className="font-bold p-2 cursor-pointer bg-white text-black rounded">
               Logout
             </button>
           </>
         ) : (
           <Link
             href="/login"
-            className="pl-0 p-2 font-medium text-center min-w-24 bg-white text-black"
+            className="pl-0 p-2 font-medium text-center min-w-24 bg-white text-black rounded"
           >
             Login
           </Link>
