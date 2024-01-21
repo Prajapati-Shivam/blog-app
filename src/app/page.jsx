@@ -5,7 +5,9 @@ const Home = () => {
     <div className="flex gap-10">
       {/* Text container */}
       <div className="flex-1 flex flex-col gap-[50px]">
-        <h1 className="text-7xl font-bold">Creative Thoughts Agency.</h1>
+        <h1 className="text-4xl md:text-7xl font-bold">
+          Creative Thoughts Agency.
+        </h1>
         <p className="text-lg">
           We are a creative agency that specializes in creating websites and
           applications that are both beautiful and functional.
@@ -24,7 +26,7 @@ const Home = () => {
       </div>
 
       {/* Image container */}
-      <div className="flex-1 relative">
+      <div className="flex-1 hidden md:flex relative">
         <Image src="/hero.gif" alt="hero image" fill />
       </div>
     </div>

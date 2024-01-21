@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
@@ -63,14 +64,16 @@ const Links = () => {
           </Link>
         )}
       </div>
-      <button
-        className="block lg:hidden cursor-pointer font-bold"
+      <Image
+        src="/menu.png"
+        alt="menu"
+        width={30}
+        height={30}
+        className="block lg:hidden cursor-pointer"
         onClick={() => setOpen((prev) => !prev)}
-      >
-        Menu
-      </button>
+      />
       {open && (
-        <div className="flex lg:hidden flex-col justify-center items-center absolute top-[100px] right-0 gap-3 w-1/2 h-[calc(100vh)] bg-[#0d0c22]">
+        <div className="flex lg:hidden flex-col pt-10 items-center fixed top-[100px] right-0 gap-3 w-1/2 h-[calc(100vh)] bg-[#2d2b42] z-40">
           {links.map((link) => (
             <Link
               href={link.path}
