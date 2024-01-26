@@ -1,5 +1,5 @@
 import React from "react";
-import { getUser } from "../../lib/data";
+import { getUser } from "@/lib/data";
 import Image from "next/image";
 
 const PostUser = async ({ userId }) => {

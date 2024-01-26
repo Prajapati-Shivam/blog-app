@@ -1,4 +1,5 @@
 "use client";
+import { handleLogout } from "@/lib/action";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,10 +23,8 @@ const links = [
     path: "/blog",
   },
 ];
-const Links = () => {
+const Links = ({ session }) => {
   const [open, setOpen] = useState(false);
-  let session = true;
-  let isAdmin = true;
   const pathName = usePathname();
   return (
     <div className="">
@@ -43,7 +42,7 @@ const Links = () => {
         ))}
         {session ? (
           <>
-            {isAdmin && (
+            {session.user?.isAdmin && (
               <Link
                 href="/admin"
                 className="p-2 font-medium text-center rounded-[20px] min-w-24"
@@ -51,9 +50,11 @@ const Links = () => {
                 Admin
               </Link>
             )}
-            <button className="font-bold p-2 cursor-pointer bg-white text-black rounded">
-              Logout
-            </button>
+            <form action={handleLogout}>
+              <button className="font-bold p-2 cursor-pointer bg-white text-black rounded">
+                Logout
+              </button>
+            </form>
           </>
         ) : (
           <Link
