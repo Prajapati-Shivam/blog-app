@@ -28,19 +28,19 @@ const Links = ({ session }) => {
   const pathName = usePathname();
   return (
     <div className="">
-      <div className="hidden items-center lg:flex">
+      <div className="hidden items-center lg:flex gap-x-3">
         {links.map((link) => (
           <Link
             href={link.path}
             key={link.title}
             className={`${
               pathName === link.path && "bg-white text-black"
-            } p-2 font-medium text-center rounded-[20px] min-w-24`}
+            } px-4 py-2 font-medium text-center rounded-[20px]`}
           >
             {link.title}
           </Link>
         ))}
-        {session ? (
+        {session?.user ? (
           <>
             {session.user?.isAdmin && (
               <Link

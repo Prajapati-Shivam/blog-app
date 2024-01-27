@@ -3,7 +3,7 @@ import Link from "next/link";
 const PostCard = ({ post }) => {
   return (
     <div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mb-4">
         {post.img && (
           <div className="w-[90%] h-[400px] relative">
             <Image

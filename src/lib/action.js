@@ -25,7 +25,7 @@ export const addPost = async (post) => {
 
 export const handleLogin = async () => {
   "use server";
-  await signIn("google");
+  await signIn("google", { redirectTo: "/blog" });
 };
 
 export const handleLogout = async () => {

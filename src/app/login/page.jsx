@@ -1,5 +1,4 @@
 import { handleLogin } from "@/lib/action";
-import { auth } from "@/lib/auth";
 
 const LoginPage = async () => {
   return (
