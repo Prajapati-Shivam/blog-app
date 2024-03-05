@@ -5,7 +5,7 @@ const Home = () => {
     <div className="flex gap-10">
       {/* Text container */}
       <div className="flex-1 flex flex-col gap-[50px]">
-        <h1 className="text-4xl md:text-7xl font-bold">
+        <h1 className="text-4xl md:text-5xl font-bold">
           Creative Thoughts Agency.
         </h1>
         <p className="text-lg">
@@ -13,10 +13,10 @@ const Home = () => {
           applications that are both beautiful and functional.
         </p>
         <div className="flex gap-4">
-          <button className="px-4 py-3 bg-[#367dfd] text-white cursor-pointer border-none outline-none rounded">
+          <button className="px-3 py-2 bg-[#367dfd] text-white cursor-pointer border-none outline-none rounded">
             Learn More
           </button>
-          <button className="px-4 py-3 bg-white text-black cursor-pointer border-none outline-none rounded">
+          <button className="px-3 py-2 bg-white text-black cursor-pointer border-none outline-none rounded">
             Contact
           </button>
         </div>
