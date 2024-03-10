@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -13,12 +14,16 @@ const Home = () => {
           applications that are both beautiful and functional.
         </p>
         <div className="flex gap-4">
-          <button className="px-3 py-2 bg-[#367dfd] text-white cursor-pointer border-none outline-none rounded">
-            Learn More
-          </button>
-          <button className="px-3 py-2 bg-white text-black cursor-pointer border-none outline-none rounded">
-            Contact
-          </button>
+          <Link href={"/about"}>
+            <button className="px-3 py-2 bg-[#367dfd] text-white cursor-pointer border-none outline-none rounded">
+              Learn More
+            </button>
+          </Link>
+          <Link href={"/contact"}>
+            <button className="px-3 py-2 bg-white text-black cursor-pointer border-none outline-none rounded">
+              Contact
+            </button>
+          </Link>
         </div>
         <div className="w-[500px] h-[50px] relative grayscale">
           <Image src="/brands.png" alt="brands" fill />

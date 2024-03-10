@@ -7,10 +7,6 @@ import React, { useState } from "react";
 
 const links = [
   {
-    title: "Homepage",
-    path: "/",
-  },
-  {
     title: "About",
     path: "/about",
   },
@@ -42,12 +38,12 @@ const Links = ({ session }) => {
         ))}
         {session?.user ? (
           <>
-            {session.user?.isAdmin && (
+            {session?.user && (
               <Link
-                href="/admin"
+                href="/dashboard"
                 className="p-2 font-medium text-center rounded-[20px] min-w-24"
               >
-                Admin
+                Dashboard
               </Link>
             )}
             <form action={handleLogout}>
@@ -88,14 +84,12 @@ const Links = ({ session }) => {
           ))}
           {session ? (
             <>
-              {isAdmin && (
-                <Link
-                  href="/admin"
-                  className="p-2 font-medium text-center rounded-[20px] min-w-24"
-                >
-                  Admin
-                </Link>
-              )}
+              <Link
+                href="/dashboard"
+                className="p-2 font-medium text-center rounded-[20px] min-w-24"
+              >
+                Dashboard
+              </Link>
               <button className="font-bold p-3 cursor-pointer">Logout</button>
             </>
           ) : (
