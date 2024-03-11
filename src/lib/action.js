@@ -1,7 +1,7 @@
 "use server";
 import { revalidatePath } from "next/cache";
 import { connectDb } from "./connectDb";
-import { Post } from "./models";
+import { Post, User } from "./models";
 import { signIn, signOut } from "./auth";
 
 export const addPost = async (post) => {

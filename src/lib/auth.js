@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { connectDb } from "./connectDb";
 import { User } from "./models";
+import { getUsers } from "./data";
 export const {
   handlers: { GET, POST },
   auth,
@@ -34,6 +35,11 @@ export const {
         }
       }
       return true;
+    },
+    async session({ session }) {
+      const user = await User.findOne({ email: session.user.email });
+      session.user = user;
+      return session;
     },
   },
 });

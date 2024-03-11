@@ -12,10 +12,10 @@ export const getPosts = async () => {
   }
 };
 
-export const getPost = async (slug) => {
+export const getPost = async (userId) => {
   try {
     connectDb();
-    const post = await Post.findOne({ slug });
+    const post = await Post.find({ userId });
     return post;
   } catch (error) {
     console.log(error);
