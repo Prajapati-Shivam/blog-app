@@ -12,7 +12,18 @@ export const getPosts = async () => {
   }
 };
 
-export const getPost = async (userId) => {
+export const getPost = async (slug) => {
+  try {
+    connectDb();
+    const post = await Post.findOne({ slug });
+    return post;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to fetch posts");
+  }
+};
+
+export const getPostById = async (userId) => {
   try {
     connectDb();
     const post = await Post.find({ userId });
