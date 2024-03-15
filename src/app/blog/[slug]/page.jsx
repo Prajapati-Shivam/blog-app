@@ -15,6 +15,7 @@ export const generateMetadata = async ({ params }) => {
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
   const post = await getPost(slug);
+  console.log(post);
   return (
     <div className="flex gap-10">
       {post.img && (

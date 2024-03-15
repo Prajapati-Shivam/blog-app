@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 const PostCard = ({ post }) => {
+  let date = new Date(post.createdAt);
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
@@ -15,7 +16,8 @@ const PostCard = ({ post }) => {
           </div>
         )}
         <span className="text-sm transform -rotate-90 relative">
-          {post.createdAt ? post.createdAt : "01.01.2024"}
+          {/* Add date later */}
+          {"01.01.2024"}
         </span>
       </div>
       <div className="flex gap-3 flex-col">

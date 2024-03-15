@@ -2,10 +2,12 @@
 import { revalidatePath } from "next/cache";
 import { connectDb } from "./connectDb";
 import { Post, User } from "./models";
-import { signIn, signOut } from "./auth";
+import { auth, signIn, signOut } from "./auth";
 
-export const addPost = async (post) => {
-  const { title, desc, slug, userId } = Object.fromEntries(post);
+export const addPost = async (props) => {
+  const session = await auth();
+  const userId = session.user._id;
+  const { title, desc, slug, img } = props;
 
   try {
     connectDb();
@@ -14,6 +16,7 @@ export const addPost = async (post) => {
       desc,
       slug,
       userId,
+      img,
     });
     await newPost.save();
     revalidatePath("/blog");
