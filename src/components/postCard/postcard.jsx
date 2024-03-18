@@ -3,29 +3,29 @@ import Link from "next/link";
 const PostCard = ({ post }) => {
   let date = new Date(post.createdAt);
   return (
-    <div>
+    <div className="p-4 rounded-lg bg-[#2d2b42]">
       <div className="flex justify-between items-center mb-4">
-        {post.img && (
-          <div className="w-[90%] h-[400px] relative">
-            <Image
-              src={post.img}
-              alt="blog image"
-              className="object-cover"
-              fill
-            />
-          </div>
-        )}
-        <span className="text-sm transform -rotate-90 relative">
-          {/* Add date later */}
-          {"01.01.2024"}
-        </span>
+        <div className="relative h-[300px] w-full">
+          <Image
+            src={post.img ? post.img : "/blog.png"}
+            alt="blog image"
+            className="object-cover rounded-lg"
+            fill
+          />
+        </div>
       </div>
       <div className="flex gap-3 flex-col">
-        <h3 className="font-bold text-xl w-[90%]">{post.title}</h3>
-        <p className="text-gray-500 w-[90%]">
-          {post.desc.length > 20 ? post.desc.slice(0, 20) + "..." : post.desc}
-        </p>
-        <Link href={`/blog/${post.slug}`}>READ MORE &rarr;</Link>
+        <h3 className="font-bold text-xl w-[90%] truncate">{post.title}</h3>
+        <p className="text-[#e5e5e5] w-[90%] line-clamp-3">{post.desc}</p>
+        <div className="flex justify-between">
+          <Link
+            href={`/blog/${post.slug}`}
+            className="text-indigo-500 font-semibold"
+          >
+            READ MORE &rarr;
+          </Link>
+          <span className="text-sm relative">{date.toLocaleDateString()}</span>
+        </div>
       </div>
     </div>
   );
