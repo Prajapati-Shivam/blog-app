@@ -1,20 +1,32 @@
 "use client";
 import { addPost } from "@/lib/action";
-import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 const CreatePost = () => {
   const createSlug = (title) => {
     return title.toLowerCase().split(" ").join("-");
   };
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+
+  const onSubmit = async (data) => {
     const slug = createSlug(data.title);
-    addPost({ ...data, slug });
+    try {
+      toast.promise(addPost({ ...data, slug }), {
+        loading: "Posting...",
+        success: "Post created!",
+        error: "Error creating post",
+      });
+      reset();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -38,7 +50,7 @@ const CreatePost = () => {
         {errors.description && <span>Description is required</span>}
         <input
           type="text"
-          {...register("img")}
+          {...register("imageLink")}
           placeholder="Link to image"
           className="p-2 rounded border-none outline-none bg-[#2d2b42]"
         />

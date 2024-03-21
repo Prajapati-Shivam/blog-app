@@ -13,12 +13,9 @@ const MyPosts = async ({ id }) => {
   return (
     <>
       <h2 className="text-xl font-medium my-4">My Posts</h2>
-      <div className="flex flex-wrap gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         {posts.map((post) => (
-          <div
-            key={post.id}
-            className="flex flex-col w-[100%] md:w-[40%] xl:w-[30%] gap-5 mb-5"
-          >
+          <div key={post.id}>
             <PostCard post={post} />
           </div>
         ))}
