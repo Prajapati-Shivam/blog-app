@@ -2,10 +2,13 @@ import MyPosts from "@/components/MyPosts";
 import { auth } from "@/lib/auth";
 import { getPost } from "@/lib/data";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const Dashboard = async () => {
   const session = await auth();
-
+  if (!session) {
+    redirect("/login");
+  }
   return (
     <>
       <div className="flex justify-between">
@@ -20,7 +23,6 @@ const Dashboard = async () => {
       </div>
       <hr className="my-4" />
       <MyPosts id={session?.user?._id} />
-      {/* <button>Create new post</button> */}
     </>
   );
 };

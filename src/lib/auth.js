@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { connectDb } from "./connectDb";
 import { User } from "./models";
-import { getUsers } from "./data";
+
 export const {
   handlers: { GET, POST },
   auth,
