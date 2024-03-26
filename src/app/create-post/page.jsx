@@ -50,7 +50,7 @@ const CreatePost = () => {
         {errors.description && <span>Description is required</span>}
         <input
           type="text"
-          {...register("imageLink")}
+          {...register("img")}
           placeholder="Link to image"
           className="p-2 rounded border-none outline-none bg-[#2d2b42]"
         />

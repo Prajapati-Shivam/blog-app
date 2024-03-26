@@ -1,14 +1,19 @@
 import MyPosts from "@/components/MyPosts";
 import { auth } from "@/lib/auth";
-import { getPost } from "@/lib/data";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { getPostById } from "@/lib/data";
 
 const Dashboard = async () => {
   const session = await auth();
   if (!session) {
     redirect("/login");
   }
+  const postsFromDb = await getPostById(session.user._id);
+
+  const posts = postsFromDb.map((post) =>
+    post.toObject ? post.toObject() : post
+  );
   return (
     <>
       <div className="flex justify-between">
@@ -22,7 +27,7 @@ const Dashboard = async () => {
         </Link>
       </div>
       <hr className="my-4" />
-      <MyPosts id={session?.user?._id} />
+      <MyPosts posts={posts} />
     </>
   );
 };

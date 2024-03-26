@@ -26,6 +26,16 @@ export const addPost = async (props) => {
   }
 };
 
+export const deletePost = async (id) => {
+  try {
+    connectDb();
+    await Post.findByIdAndDelete(id);
+    revalidatePath("/blog");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const handleLogin = async () => {
   "use server";
   await signIn("google", { redirectTo: "/blog" });

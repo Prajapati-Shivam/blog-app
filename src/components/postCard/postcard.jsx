@@ -1,9 +1,29 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { Trash } from "lucide-react";
+import { deletePost } from "@/lib/action";
+import { toast } from "react-hot-toast";
+
 const PostCard = ({ post }) => {
   let date = new Date(post.createdAt);
+  const handleDeletePost = (postId) => {
+    try {
+      deletePost(postId);
+      toast.success("Post deleted successfully");
+    } catch (error) {
+      toast.error("Failed to delete post");
+      console.log(error);
+    }
+  };
   return (
-    <div className="p-4 rounded-lg bg-[#2d2b42]">
+    <div className="p-4 rounded-lg bg-[#2d2b42] relative ">
+      <div
+        className="bg-red-500 cursor-pointer rounded-lg z-20 p-2 m-6 absolute top-0 right-0 hidden group-hover:block transition-opacity duration-300"
+        onClick={() => handleDeletePost(post._id)}
+      >
+        <Trash />
+      </div>
       <div className="flex justify-between items-center mb-4">
         <div className="relative h-[300px] w-full">
           <Image
