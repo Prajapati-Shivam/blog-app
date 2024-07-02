@@ -1,36 +1,39 @@
-import { connectDb } from "./connectDb";
-import { Post, User } from "./models";
+import { connectDb } from './connectDb';
+import { Post, User } from './models';
 
 export const getPosts = async () => {
   try {
     connectDb();
-    const posts = await Post.find();
+    let posts = await Post.find();
+    posts.map((p) => JSON.parse(JSON.stringify(p)));
     return posts;
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to fetch posts");
+    throw new Error('Failed to fetch posts');
   }
 };
 
 export const getPost = async (slug) => {
   try {
     connectDb();
-    const post = await Post.findOne({ slug });
+    let post = await Post.findOne({ slug });
+    post = JSON.parse(JSON.stringify(post));
     return post;
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to fetch posts");
+    throw new Error('Failed to fetch posts');
   }
 };
 
-export const getPostById = async (userId) => {
+export const getPostByUserId = async (userId) => {
   try {
     connectDb();
-    const post = await Post.find({ userId });
-    return post;
+    let posts = await Post.find({ userId });
+    posts.map((p) => JSON.parse(JSON.stringify(p)));
+    return posts;
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to fetch posts");
+    throw new Error('Failed to fetch posts');
   }
 };
 
@@ -41,7 +44,7 @@ export const getUsers = async () => {
     return users;
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to fetch users");
+    throw new Error('Failed to fetch users');
   }
 };
 export const getUser = async (id) => {
@@ -51,6 +54,6 @@ export const getUser = async (id) => {
     return user;
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to fetch user");
+    throw new Error('Failed to fetch user');
   }
 };
