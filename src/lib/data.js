@@ -5,7 +5,7 @@ export const getPosts = async () => {
   try {
     connectDb();
     let posts = await Post.find();
-    posts.map((p) => JSON.parse(JSON.stringify(p)));
+    posts = JSON.parse(JSON.stringify(posts));
     return posts;
   } catch (error) {
     console.log(error);

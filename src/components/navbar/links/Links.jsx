@@ -30,8 +30,8 @@ const Links = ({ session }) => {
             href={link.path}
             key={link.title}
             className={`${
-              pathName === link.path && 'bg-white text-black'
-            } px-4 py-2 font-medium text-center rounded-[20px]`}
+              pathName === link.path && 'bg-white hover:bg-white text-black'
+            } hover:bg-slate-800 px-4 py-2 font-medium text-center rounded-[20px]`}
           >
             {link.title}
           </Link>
