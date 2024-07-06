@@ -1,8 +1,8 @@
-"use server";
-import { revalidatePath } from "next/cache";
-import { connectDb } from "./connectDb";
-import { Post, User } from "./models";
-import { auth, signIn, signOut } from "./auth";
+'use server';
+import { revalidatePath } from 'next/cache';
+import { connectDb } from './connectDb';
+import { Post, User } from './models';
+import { auth, signIn, signOut } from './auth';
 
 export const addPost = async (props) => {
   const session = await auth();
@@ -19,29 +19,30 @@ export const addPost = async (props) => {
       img,
     });
     await newPost.save();
-    revalidatePath("/blog");
+    revalidatePath('/blog');
   } catch (error) {
     console.log(error);
-    throw new error("Error adding post");
+    throw new error('Error adding post');
   }
 };
 
 export const deletePost = async (id) => {
+  const session = await auth();
   try {
     connectDb();
-    await Post.findByIdAndDelete(id);
-    revalidatePath("/blog");
+    await Post.findByIdAndDelete(id).where('userId').equals(session.user._id);
+    revalidatePath('/blog');
   } catch (error) {
     console.log(error);
   }
 };
 
 export const handleLogin = async () => {
-  "use server";
-  await signIn("google", { redirectTo: "/blog" });
+  'use server';
+  await signIn('google', { redirectTo: '/blog' });
 };
 
 export const handleLogout = async () => {
-  "use server";
+  'use server';
   await signOut();
 };

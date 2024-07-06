@@ -24,14 +24,14 @@ const Links = ({ session }) => {
   const pathName = usePathname();
   return (
     <div className=''>
-      <div className='hidden items-center lg:flex gap-x-3'>
+      <div className='hidden items-center lg:flex gap-x-2'>
         {links.map((link) => (
           <Link
             href={link.path}
             key={link.title}
             className={`${
               pathName === link.path && 'bg-white hover:bg-white text-black'
-            } hover:bg-slate-800 px-4 py-2 font-medium text-center rounded-[20px]`}
+            } hover:bg-slate-800 px-4 py-2 font-medium text-center rounded-3xl transition-colors duration-300 ease-in-out`}
           >
             {link.title}
           </Link>
@@ -41,20 +41,23 @@ const Links = ({ session }) => {
             {session?.user && (
               <Link
                 href='/dashboard'
-                className='p-2 font-medium text-center rounded-[20px] min-w-24'
+                className={`
+                  ${
+                    pathName === '/dashboard' && 'border-[#367dfd] bg-black'
+                  } px-4 py-2 ml-2 font-medium text-center rounded-3xl border-2 hover:border-[#367dfd] transition-colors duration-300 ease-in-out`}
               >
                 Dashboard
               </Link>
             )}
             <form action={handleLogout}>
-              <button className='font-bold p-2 cursor-pointer bg-white text-black rounded'>
+              <button className='font-bold p-2 ml-2 cursor-pointer bg-[#367dfd] text-white rounded'>
                 Logout
               </button>
             </form>
           </>
         ) : (
           <form action={handleLogin}>
-            <button className='pl-0 p-2 font-medium text-center min-w-24 bg-white text-black rounded'>
+            <button className='ml-2 p-2 font-medium text-center min-w-24 bg-[#367dfd] text-white rounded'>
               Login
             </button>
           </form>
