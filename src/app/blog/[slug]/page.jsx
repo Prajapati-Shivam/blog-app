@@ -19,7 +19,7 @@ const SinglePostPage = async ({ params }) => {
       {post.img && (
         <div className='relative h-[300px] w-full'>
           <Image
-            src={post.img}
+            src={post.img ? post.img : '/blog.jpg'}
             alt='post image'
             className='object-cover rounded-lg'
             fill

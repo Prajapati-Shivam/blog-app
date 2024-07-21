@@ -15,12 +15,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <div className='m-auto w-[90%] sm:w-[80%] px-4 sm:px-8 lg:px-12 flex flex-col'>
+        <div className='m-auto w-[90%] sm:w-[80%] px-4 sm:px-8 lg:px-12 grid grid-rows-[auto_1fr_auto] min-h-[100dvh]'>
           <Navbar />
           {children}
           <Footer />
-          <Toaster />
         </div>
+        <Toaster />
       </body>
     </html>
   );

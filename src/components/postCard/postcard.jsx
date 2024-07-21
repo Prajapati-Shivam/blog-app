@@ -36,7 +36,7 @@ const PostCard = ({ post }) => {
 
       <div onClick={() => navigate.push(`/blog/${post.slug}`)}>
         <Image
-          src={post.img ? post.img : '/blog.png'}
+          src={post.img ? post.img : '/blog.jpg'}
           alt='blog image'
           fill
           className='absolute object-cover rounded-md inset-0 opacity-75 transition-opacity group-hover:opacity-50'

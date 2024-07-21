@@ -1,7 +1,7 @@
-import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
-import { connectDb } from "./connectDb";
-import { User } from "./models";
+import NextAuth from 'next-auth';
+import Google from 'next-auth/providers/google';
+import { connectDb } from './connectDb';
+import { User } from './models';
 
 export const {
   handlers: { GET, POST },
@@ -17,9 +17,9 @@ export const {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      if (account.provider === "google") {
-        connectDb();
+      if (account.provider === 'google') {
         try {
+          await connectDb();
           const userExists = await User.findOne({ email: profile.email });
           if (!userExists) {
             const newUser = new User({
@@ -30,15 +30,26 @@ export const {
             await newUser.save();
           }
         } catch (error) {
-          console.log(error);
+          console.error('Error in signIn callback:', error);
           return false;
         }
       }
       return true;
     },
     async session({ session }) {
-      const user = await User.findOne({ email: session.user.email });
-      session.user = user;
+      try {
+        await connectDb();
+        const user = await User.findOne({ email: session.user.email });
+        if (user) {
+          session.user = user;
+        } else {
+          console.error('User not found in session callback');
+          return null;
+        }
+      } catch (error) {
+        console.error('Error in session callback:', error);
+        return null;
+      }
       return session;
     },
   },

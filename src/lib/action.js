@@ -44,5 +44,5 @@ export const handleLogin = async () => {
 
 export const handleLogout = async () => {
   'use server';
-  await signOut();
+  await signOut({ redirectTo: '/blog' });
 };

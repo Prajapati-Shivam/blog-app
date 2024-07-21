@@ -12,7 +12,7 @@ const AboutPage = () => {
       {/* Text container */}
       <div className='flex-1 flex flex-col gap-[50px]'>
         <h2 className='text-2xl font-bold text-[#367dfd]'>About Us</h2>
-        <h1 className='text-3xl sm:text-5xl font-bold'>
+        <h1 className='text-3xl sm:text-4xl font-bold'>
           Welcome to our platform
         </h1>
         <ul className='list-inside'>

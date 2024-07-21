@@ -6,7 +6,11 @@ import { toast } from 'react-hot-toast';
 
 const CreatePost = () => {
   const createSlug = (title) => {
-    return title.toLowerCase().split(' ').join('-');
+    if (title.includes(' ')) {
+      return title.toLowerCase();
+    } else {
+      return title.toLowerCase().split(' ').join('-');
+    }
   };
 
   const {
@@ -41,7 +45,7 @@ const CreatePost = () => {
         <input
           type='url'
           {...register('img')}
-          placeholder='Link to image'
+          placeholder='Link to image (optional)'
           className='border-2 border-dashed rounded p-2 border-[#367dfd] outline-none bg-transparent text-lg text-gray-300 w-full'
         />
         <input
