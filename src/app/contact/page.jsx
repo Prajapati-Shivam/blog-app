@@ -1,46 +1,44 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const ContactPage = () => {
   return (
-    <div className="flex items-center gap-10">
-      <div className="flex-1 hidden md:flex relative h-[450px]">
+    <div className='flex flex-col md:flex-row items-center gap-10'>
+      <div className='flex-1 w-auto h-[450px]'>
         <Image
-          src="/contact.png"
-          alt="contact image"
-          fill
-          className="object-contain"
+          src='/contact.png'
+          alt='contact image'
+          width={450}
+          height={450}
         />
       </div>
-      <div className="flex-1 flex my-6 sm:my-0">
-        <form action="" className="flex-1 flex flex-col gap-5">
-          <input
-            type="text"
-            placeholder="Your name"
-            className="p-2 rounded border-none outline-none bg-[#2d2b42]"
-          />
-          <input
-            type="email"
-            placeholder="Email Address"
-            className="p-2 rounded border-none outline-none bg-[#2d2b42]"
-          />
-          <input
-            type="number"
-            placeholder="Phone Number (Optional)"
-            className="p-2 rounded border-none outline-none bg-[#2d2b42]"
-          />
-          <textarea
-            name="message"
-            id=""
-            cols="30"
-            rows="4"
-            placeholder="Message"
-            className="p-2 rounded border-none outline-none bg-[#2d2b42]"
-          ></textarea>
-          <button className="px-4 py-3 bg-[#367dfd] text-white cursor-pointer font-bold border-none outline-none rounded">
-            Send Message
-          </button>
-        </form>
-      </div>
+      <form action='' className='flex w-full flex-col gap-5'>
+        <input
+          type='text'
+          placeholder='Your name'
+          className='p-2 rounded border-none outline-none bg-[#2d2b42]'
+        />
+        <input
+          type='email'
+          placeholder='Email Address'
+          className='p-2 rounded border-none outline-none bg-[#2d2b42]'
+        />
+        <input
+          type='number'
+          placeholder='Phone Number (Optional)'
+          className='p-2 rounded border-none outline-none bg-[#2d2b42]'
+        />
+        <textarea
+          name='message'
+          id=''
+          cols='30'
+          rows='4'
+          placeholder='Message'
+          className='p-2 rounded border-none outline-none bg-[#2d2b42]'
+        ></textarea>
+        <button className='px-4 py-3 bg-[#367dfd] text-white cursor-pointer font-bold border-none outline-none rounded'>
+          Send Message
+        </button>
+      </form>
     </div>
   );
 };
