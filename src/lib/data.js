@@ -6,6 +6,8 @@ export const getPosts = async () => {
     connectDb();
     let posts = await Post.find();
     posts = JSON.parse(JSON.stringify(posts));
+    // sends posts in descending order
+    posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     return posts;
   } catch (error) {
     console.log(error);

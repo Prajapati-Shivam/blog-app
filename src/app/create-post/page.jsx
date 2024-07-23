@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 
 const CreatePost = () => {
   const createSlug = (title) => {
-    if (title.includes(' ')) {
+    if (!title.includes(' ')) {
       return title.toLowerCase();
     } else {
       return title.toLowerCase().split(' ').join('-');

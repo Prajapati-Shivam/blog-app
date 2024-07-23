@@ -15,7 +15,7 @@ export const generateMetadata = async ({ params }) => {
 const SinglePostPage = async ({ params }) => {
   const post = await getPost(params.slug);
   return (
-    <div className='flex flex-col gap-6'>
+    <div className='flex flex-col gap-6 mt-4 mb-8'>
       <div className='relative h-[300px] w-full'>
         <Image
           src={post.img ? post.img : '/blog.jpg'}

@@ -24,7 +24,7 @@ const PostCard = ({ post }) => {
     }
   };
   return (
-    <div className='group relative block hover:cursor-pointer'>
+    <div className='group relative block hover:cursor-pointer h-[250px]'>
       {path === '/dashboard' && (
         <div
           className='bg-red-500 cursor-pointer rounded-lg z-20 p-2 m-6 absolute top-0 right-0 hidden group-hover:block transition-opacity duration-300'
@@ -34,28 +34,29 @@ const PostCard = ({ post }) => {
         </div>
       )}
 
-      <div onClick={() => navigate.push(`/blog/${post.slug}`)}>
+      <div
+        onClick={() => navigate.push(`/blog/${post.slug}`)}
+        className='p-4 sm:p-6 flex flex-col justify-between h-full relative'
+      >
         <Image
           src={post.img ? post.img : '/blog.jpg'}
           alt='blog image'
           fill
           className='absolute object-cover rounded-md inset-0 opacity-75 transition-opacity group-hover:opacity-50'
         />
-        <div className='relative p-4 sm:p-6 lg:p-8'>
+        <div className='relative'>
           <span className='text-sm relative'>{date.toLocaleDateString()}</span>
 
           <p className='text-xl font-bold text-white sm:text-2xl truncate'>
             {post.title}
           </p>
+        </div>
 
-          <div className='mt-32 sm:mt-48 lg:mt-64'>
-            <div className='translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100'>
-              <p className='text-sm text-white line-clamp-3'>{post.desc}</p>
-              <span className='text-indigo-300 font-semibold'>
-                READ MORE &rarr;
-              </span>
-            </div>
-          </div>
+        <div className='translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100'>
+          <p className='text-sm text-white line-clamp-3'>{post.desc}</p>
+          <span className='text-indigo-300 font-semibold'>
+            READ MORE &rarr;
+          </span>
         </div>
       </div>
     </div>
