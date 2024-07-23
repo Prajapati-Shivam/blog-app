@@ -1,6 +1,5 @@
 'use client';
 import { addPost } from '@/lib/action';
-import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 

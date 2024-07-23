@@ -1,4 +1,4 @@
-import PostCard from '@/components/postCard/PostCard';
+import PostCard from '@/components/PostCard';
 import { getPosts } from '@/lib/data';
 
 const BlogPage = async () => {

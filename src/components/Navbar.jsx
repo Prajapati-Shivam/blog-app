@@ -1,5 +1,5 @@
 import React from 'react';
-import Links from './links/Links';
+import Links from './Links';
 import Link from 'next/link';
 import { auth } from '@/lib/auth';
 import { Lightbulb } from 'lucide-react';
